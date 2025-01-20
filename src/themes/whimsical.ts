@@ -2,7 +2,7 @@ import { type Theme } from './types';
 
 export const whimsicalTheme: Theme = {
   name: 'whimsical',
-  logo: '/logo2.png', // Logo shown in chat header
+  logo: '/chatbottheme/logo2.png', // Logo shown in chat header
   colors: {
     primary: '181 100% 26%', // User message bubbles, send button
     background: '174 57% 90%', // Chat dialog background

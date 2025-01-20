@@ -2,7 +2,7 @@ import { type Theme } from './types';
 
 export const modernTheme: Theme = {
   name: 'modern',
-  logo: '/logo1.png', // Logo shown in chat header
+  logo: '/chatbottheme/logo1.png', // Logo shown in chat header
   colors: {
     primary: '242 65% 24%', // User message bubbles, send button
     background: 'hsl(0 0% 100%)', // Chat dialog background
