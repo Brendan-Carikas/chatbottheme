@@ -4,7 +4,7 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { TooltipProvider } from './components/ui/tooltip';
 import { Toaster } from './components/ui/toaster';
 import { ThemeSwitcher } from './components/ThemeSwitcher';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Index from './pages/Index';
 import Spec from './pages/Spec';
 import { cn } from '@/lib/utils';
@@ -39,7 +39,7 @@ const AppContent = () => {
 
 const App = () => {
   return (
-    <Router basename="/chatbottheme">
+    <Router>
       <AppContent />
     </Router>
   );
