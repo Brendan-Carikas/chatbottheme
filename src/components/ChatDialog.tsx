@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Send, ThumbsUp, ThumbsDown, Check, Palette } from 'lucide-react';
 import { Button } from './ui/button';
 import { Card } from './ui/card';
@@ -24,17 +24,8 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 interface ChatDialogProps {
   onClose?: () => void;
+  theme?: keyof typeof themes;
 }
-
-const LoadingDots = () => {
-  return (
-    <div className="flex space-x-1 h-3">
-      <div className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-[bounce_1.4s_infinite_0.2s]" />
-      <div className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-[bounce_1.4s_infinite_0.4s]" />
-      <div className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-[bounce_1.4s_infinite_0.6s]" />
-    </div>
-  );
-};
 
 interface Message {
   id: string;
@@ -48,9 +39,27 @@ interface Message {
   };
 }
 
-const ChatDialog = ({ onClose }: ChatDialogProps) => {
-  const { theme } = useTheme();
-  const currentTheme = themes[theme];
+const LoadingDots = () => {
+  return (
+    <div className="flex space-x-1 h-3">
+      <div className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-[bounce_1.4s_infinite_0.2s]" />
+      <div className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-[bounce_1.4s_infinite_0.4s]" />
+      <div className="w-2 h-2 bg-muted-foreground/40 rounded-full animate-[bounce_1.4s_infinite_0.6s]" />
+    </div>
+  );
+};
+
+const ChatDialog = ({ onClose, theme }: ChatDialogProps) => {
+  const { theme: contextTheme, setTheme } = useTheme();
+  const activeTheme = theme || contextTheme;
+
+  useEffect(() => {
+    if (theme) {
+      setTheme(theme);
+    }
+  }, [theme, setTheme]);
+
+  const currentTheme = themes[activeTheme];
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -157,7 +166,7 @@ const ChatDialog = ({ onClose }: ChatDialogProps) => {
         <div className="flex items-center gap-3">
           <div className="h-[56px] w-auto">
             <img 
-              src={themes[theme].logo}
+              src={themes[activeTheme].logo}
               alt="Logo" 
               className="h-full w-auto"
             />
@@ -264,13 +273,15 @@ const ChatDialog = ({ onClose }: ChatDialogProps) => {
                 "flex items-center gap-2",
                 message.sender === 'user' ? "justify-end" : "justify-start",
               )}>
-                <span className={cn(
-                  "text-muted-foreground",
-                  `text-${currentTheme.messageStyles.fontSize.timestamp}`
-                )}>
-                  {message.timestamp.toLocaleTimeString()}
-                </span>
-                {message.sender === 'bot' && !message.feedback && (
+                {activeTheme !== 'artotheme' && (
+                  <span className={cn(
+                    "text-muted-foreground",
+                    `text-${currentTheme.messageStyles.fontSize.timestamp}`
+                  )}>
+                    {message.timestamp.toLocaleTimeString()}
+                  </span>
+                )}
+                {message.sender === 'bot' && !message.feedback && activeTheme !== 'artotheme' && (
                   <div className="flex gap-1" role="group" aria-label="Message feedback">
                     <Button
                       variant="ghost"
