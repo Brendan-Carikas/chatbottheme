@@ -29,8 +29,9 @@ export const artotheme: Theme = {
     shadow: 'none', // No shadow on message bubbles
     fontSize: {
       message: 'sm', // Message text size
-      timestamp: 'xs' // Timestamp text size
-    }
+      timestamp: 'none' // Hide timestamp
+    },
+    showFeedback: false // Hide feedback buttons
   },
   buttonStyles: {
     primary: {

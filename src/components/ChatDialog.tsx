@@ -273,7 +273,7 @@ const ChatDialog = ({ onClose, theme }: ChatDialogProps) => {
                 "flex items-center gap-2",
                 message.sender === 'user' ? "justify-end" : "justify-start",
               )}>
-                {activeTheme !== 'artotheme' && (
+                {currentTheme.messageStyles.fontSize.timestamp !== 'none' && (
                   <span className={cn(
                     "text-muted-foreground",
                     `text-${currentTheme.messageStyles.fontSize.timestamp}`
@@ -281,7 +281,7 @@ const ChatDialog = ({ onClose, theme }: ChatDialogProps) => {
                     {message.timestamp.toLocaleTimeString()}
                   </span>
                 )}
-                {message.sender === 'bot' && !message.feedback && activeTheme !== 'artotheme' && (
+                {message.sender === 'bot' && !message.feedback && currentTheme.messageStyles.showFeedback !== false && (
                   <div className="flex gap-1" role="group" aria-label="Message feedback">
                     <Button
                       variant="ghost"
