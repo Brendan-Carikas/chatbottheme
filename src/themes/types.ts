@@ -11,6 +11,8 @@ export interface Theme {
     popoverForeground: string;
     secondary: string;
     secondaryForeground: string;
+    border: string;
+    focusRing: string; // Color for focus indicators
   };
   fonts: {
     sans: string[];
@@ -25,6 +27,10 @@ export interface Theme {
     maxWidth: string;
     padding: string;
     shadow: string;
+    fontSize: {
+      message: string;
+      timestamp: string;
+    };
   };
   buttonStyles: {
     primary: {

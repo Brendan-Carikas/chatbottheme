@@ -2,11 +2,12 @@ import { type Theme } from './types';
 
 export const modernTheme: Theme = {
   name: 'modern',
-  logo: '/chatbottheme/logo1.png', // Logo shown in chat header
+  logo: '/chatbottheme/Arto-Logo-Reverse.svg', // Logo shown in chat header
   colors: {
     primary: '242 65% 24%', // User message bubbles, send button
     background: 'hsl(0 0% 100%)', // Chat dialog background
-    foreground: 'hsl(222.2 84% 4.9%)', // Main text color
+    foreground: 'hsl(0 0% 3.9%)',
+    border: 'hsl(0 0% 89.8%)',
     card: 'hsl(0 0% 100%)', // Chat dialog card background
     cardForeground: '222.2 84% 4.9%', // Text color in chat dialog card
     popover: '0 0% 100%', // Dropdown menus background
@@ -15,6 +16,7 @@ export const modernTheme: Theme = {
     secondaryForeground: '222.2 47.4% 11.2%', // Bot message text color
     muted: '210 40% 96.1%', // Timestamps, secondary text
     mutedForeground: '215.4 16.3% 46.9%', // Timestamp text color
+    focusRing: '#FCDC5D', // Focus indicator color
   },
   fonts: {
     sans: ['Libre Franklin', 'sans-serif'], // Main chat font

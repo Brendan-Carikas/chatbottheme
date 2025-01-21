@@ -2,7 +2,7 @@ import type { Theme } from './types';
 
 export const botTheme: Theme = {
   name: 'bot',
-  logo: '/chatbottheme/logo1.png', // Logo shown in chat header
+  logo: '/chatbottheme/Arto-Logo-Reverse.svg', // Logo shown in chat header
   colors: {
     primary: '242 65% 24%', // User message bubbles, send button
     background: '0 0% 100%', // Chat dialog background

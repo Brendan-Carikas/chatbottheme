@@ -4,13 +4,11 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { TooltipProvider } from './components/ui/tooltip';
 import { Toaster } from './components/ui/toaster';
 import { ThemeSwitcher } from './components/ThemeSwitcher';
-import ChatDialog from './components/ChatDialog';
+import Index from './pages/Index';
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [isChatOpen, setIsChatOpen] = useState(true);
-
   return (
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
@@ -18,9 +16,7 @@ const App = () => {
           <Toaster />
           <ThemeSwitcher />
           <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-            <div className="fixed bottom-6 right-6 w-[400px] z-50">
-              <ChatDialog onClose={() => setIsChatOpen(false)} />
-            </div>
+            <Index />
           </div>
         </TooltipProvider>
       </QueryClientProvider>
