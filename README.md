@@ -1,6 +1,9 @@
 # ArtoChat Theme System
 
-A modern, customizable chat interface built with React, TypeScript, and Tailwind CSS. View the live demo at [https://brendan-carikas.github.io/chatbottheme/](https://brendan-carikas.github.io/chatbottheme/)
+A modern, customizable chat interface built with React, TypeScript, and Tailwind CSS. 
+View spec version: https://brendan-carikas.github.io/chatbottheme/#/spec
+
+View the live demo at [https://brendan-carikas.github.io/chatbottheme/](https://brendan-carikas.github.io/chatbottheme/)
 
 ## Features
 
