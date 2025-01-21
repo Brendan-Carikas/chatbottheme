@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Arto-icon-Reverse</title>
+    <g id="Arto-icon-Reverse" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Arto-Icon" transform="translate(75.61, 36)">
+            <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" x="59.16" y="17.39" width="16.79" height="32.5"></rect>
+            <path d="M67.55,54.36 L67.55,54.36 C104.83,54.36 135.1,84.63 135.1,121.91 L135.1,189.46 L67.55,189.46 C30.27,189.46 0,159.19 0,121.91 L0,121.91 C0,84.63 30.27,54.36 67.55,54.36 Z" id="Path" stroke="#FFFFFF" stroke-width="29.23"></path>
+            <circle id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="41.39" cy="128.5" r="14.28"></circle>
+            <circle id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="96.72" cy="128.5" r="14.28"></circle>
+            <circle id="Oval" fill="#FFFFFF" fill-rule="nonzero" cx="67.55" cy="14.28" r="14.28"></circle>
+        </g>
+    </g>
+</svg>
