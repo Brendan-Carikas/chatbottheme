@@ -15,7 +15,7 @@ export const botTheme: Theme = {
     secondaryForeground: '0 0% 0%', // Bot message text color
   },
   fonts: {
-    sans: ['Quicksand', 'sans-serif'], // Main chat font
+    sans: ['Libre Franklin', 'sans-serif'], // Main chat font
   },
   borderRadius: {
     userMessage: '20px 20px 4px 20px', // User message bubble corners

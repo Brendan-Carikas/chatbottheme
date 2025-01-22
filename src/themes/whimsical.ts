@@ -15,7 +15,7 @@ export const whimsicalTheme: Theme = {
     mutedForeground: '0 0% 0%', // 
   },
   fonts: {
-    sans: ['Quicksand', 'sans-serif'], // Main chat font
+    sans: ['Libre Franklin', 'sans-serif'], // Main chat font
   },
   borderRadius: {
     userMessage: '20px 20px 4px 20px', // User message bubble corners
