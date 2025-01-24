@@ -126,4 +126,4 @@ View the live demo at [https://brendan-carikas.github.io/chatbottheme/](https://
 
 ## License
 
-MIT License - See LICENSE file for moredetails
+MIT License - See LICENSE file for details
