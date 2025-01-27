@@ -31,7 +31,8 @@ export const artotheme: Theme = {
       message: 'sm', // Message text size
       timestamp: 'none' // Hide timestamp
     },
-    showFeedback: false // Hide feedback buttons
+    showFeedback: false, // Hide feedback buttons
+    hideAssistantInfo: true // Hide AI Assistant icon and text
   },
   buttonStyles: {
     primary: {
