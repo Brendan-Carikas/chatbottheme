@@ -31,6 +31,8 @@ export interface Theme {
       message: string;
       timestamp: string;
     };
+    showFeedback?: boolean;
+    hideAssistantInfo?: boolean;
   };
   buttonStyles: {
     primary: {

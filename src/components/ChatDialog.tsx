@@ -9,18 +9,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "./ui/tooltip";
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/contexts/ThemeContext';
 import { themes } from '@/themes';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import AssistantIcon from '@mui/icons-material/Assistant';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import Tooltip from '@mui/material/Tooltip';
 
 interface ChatDialogProps {
   onClose?: () => void;
@@ -178,37 +173,72 @@ const ChatDialog = ({ onClose, theme }: ChatDialogProps) => {
   return (
     <Card className="h-[600px] w-full max-w-full sm:max-w-[448px] flex flex-col overflow-hidden border border-[#E5E7EB] shadow-[0_4px_12px_0_rgba(0,0,0,0.12)]" role="dialog" aria-label="Chat Dialog">
       {/* Header */}
-      <div className="bg-primary text-primary-foreground p-4 flex items-center justify-between rounded-t-lg">
+      <div className={cn(
+        "p-4 flex items-center justify-between rounded-t-lg",
+        activeTheme === 'voobottheme' 
+          ? "bg-white text-primary border-b border-[#E5E7EB]" 
+          : "bg-primary text-primary-foreground"
+      )}>
         <div className="flex items-center gap-3">
-          <div className="h-[56px] w-auto">
+          <div className={cn(
+            "flex items-center",
+            activeTheme === 'voobottheme' ? "h-auto" : "h-[56px]",
+            "w-auto"
+          )}>
             <img 
               src={themes[activeTheme].logo}
               alt="Logo" 
-              className="h-full w-auto"
+              className={cn(
+                "h-full w-auto",
+                activeTheme === 'voobottheme' && "h-[32px]"
+              )}
             />
           </div>
-          <TooltipProvider>
-            <Tooltip delayDuration={0}>
-              <TooltipTrigger asChild>
-                <button 
-                  className="p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full"
-                  aria-label="Information about AI Assistant"
-                  tabIndex={2}
-                >
-                  <InfoOutlinedIcon className="h-4 w-4 text-primary-foreground" sx={{ fontSize: 16 }} />
-                </button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom" align="start" className="text-xs max-w-[280px]">
-                <p>These answers are generated using artificial intelligence. This is an experimental technology, and information may occasionally be incorrect or misleading.</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <Tooltip 
+            title="These answers are generated using artificial intelligence. This is an experimental technology, and information may occasionally be incorrect or misleading."
+            arrow
+            placement="bottom"
+            sx={{
+              '& .MuiTooltip-tooltip': {
+                backgroundColor: 'rgba(97, 97, 97, 0.92)',
+                color: '#fff',
+                fontSize: '0.75rem',
+                padding: '8px 12px',
+                maxWidth: '280px',
+                borderRadius: '4px'
+              },
+              '& .MuiTooltip-arrow': {
+                color: 'rgba(97, 97, 97, 0.92)'
+              }
+            }}
+          >
+            <button 
+              className="p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-full"
+              aria-label="Information about AI Assistant"
+              tabIndex={2}
+            >
+              <InfoOutlinedIcon 
+                className={cn(
+                  "h-4 w-4",
+                  activeTheme === 'voobottheme' 
+                    ? "text-black" 
+                    : "text-primary-foreground"
+                )} 
+                sx={{ fontSize: 16 }} 
+              />
+            </button>
+          </Tooltip>
         </div>
         {onClose && (
           <Button
             variant="ghost"
             size="icon"
-            className="hover:bg-primary-foreground/10 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            className={cn(
+              "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+              activeTheme === 'voobottheme'
+                ? "hover:bg-gray-100 text-black"
+                : "hover:bg-primary-foreground/10 text-primary-foreground"
+            )}
             onClick={onClose}
             aria-label="Close chat"
             tabIndex={1}
@@ -219,10 +249,12 @@ const ChatDialog = ({ onClose, theme }: ChatDialogProps) => {
       </div>
 
       {/* Assistant Label */}
-      <div className="flex items-center gap-2 px-4 py-2 bg-secondary/30">
-        <AssistantIcon className="h-[17.5px] w-[17.5px] text-primary" sx={{ stroke: 'none' }} />
-        <span className="text-xs">AI Assistant</span>
-      </div>
+      {!currentTheme.messageStyles.hideAssistantInfo && (
+        <div className="flex items-center gap-2 px-4 py-2 bg-secondary/30">
+          <AssistantIcon className="h-[17.5px] w-[17.5px] text-primary" sx={{ stroke: 'none' }} />
+          <span className="text-xs">AI Assistant</span>
+        </div>
+      )}
 
       {/* Chat Content */}
       <div className="flex flex-col flex-1 overflow-hidden">
@@ -248,7 +280,7 @@ const ChatDialog = ({ onClose, theme }: ChatDialogProps) => {
                 message.sender === 'user' ? "justify-end" : "justify-start",
                 "w-full"
               )}>
-                {message.sender === 'bot' && currentTheme.name === 'bot' && (
+                {message.sender === 'bot' && activeTheme === 'bot' && !currentTheme.messageStyles.hideAssistantInfo && (
                   <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
                     <img 
                       src="/chatbottheme/Arto-icon.svg"
@@ -413,7 +445,10 @@ const ChatDialog = ({ onClose, theme }: ChatDialogProps) => {
             </Button>
           </div>
           <div className="text-xs text-center mt-4 font-regular">
-            <span className="text-[#C0C0C0] mt-0 inline-block">Powered by</span> <img src="/chatbottheme/arto-site-logo-grey.svg" alt="Arto" className="inline-block h-4 mb-1 ml-0.5" />
+            <a href="https://invotra.com/arto-ai-chatbot/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center hover:opacity-80">
+              <span className="text-[#C0C0C0] mt-0">Powered by</span>
+              <img src="/chatbottheme/arto-site-logo-grey.svg" alt="Arto" className="inline-block h-4 mb-1 ml-0.5" />
+            </a>
           </div>
         </div>
       </div>
