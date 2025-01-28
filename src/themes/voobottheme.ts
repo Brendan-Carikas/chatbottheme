@@ -34,11 +34,11 @@ export const voobottheme: Theme = {
     padding: '14px',
     shadow: 'sm', // Subtle shadow for depth
     fontSize: {
-      message: 'sm',
-      timestamp: 'xs'
+      message: 'sm'
     },
     showFeedback: false,
-    hideAssistantInfo: true
+    hideAssistantInfo: true,
+    hideTimestamp: true
   },
   buttonStyles: {
     primary: {

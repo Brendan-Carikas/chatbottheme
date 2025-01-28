@@ -200,7 +200,7 @@ const ChatDialog = ({ onClose, theme }: ChatDialogProps) => {
             placement="bottom"
             sx={{
               '& .MuiTooltip-tooltip': {
-                backgroundColor: 'rgba(97, 97, 97, 0.92)',
+                backgroundColor: 'rgba(0, 0, 0, 0.9)',
                 color: '#fff',
                 fontSize: '0.75rem',
                 padding: '8px 12px',
@@ -208,7 +208,7 @@ const ChatDialog = ({ onClose, theme }: ChatDialogProps) => {
                 borderRadius: '4px'
               },
               '& .MuiTooltip-arrow': {
-                color: 'rgba(97, 97, 97, 0.92)'
+                color: 'rgba(0, 0, 0, 0.9)'
               }
             }}
           >
@@ -316,7 +316,7 @@ const ChatDialog = ({ onClose, theme }: ChatDialogProps) => {
                 "flex items-center gap-2",
                 message.sender === 'user' ? "justify-end" : "justify-start",
               )}>
-                {currentTheme.messageStyles.fontSize.timestamp !== 'none' && (
+                {!currentTheme.messageStyles.hideTimestamp && currentTheme.messageStyles.fontSize.timestamp !== 'none' && (
                   <span className={cn(
                     "text-muted-foreground",
                     `text-${currentTheme.messageStyles.fontSize.timestamp}`

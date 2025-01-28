@@ -14,9 +14,9 @@ const queryClient = new QueryClient();
 
 const AppContent = () => {
   const location = useLocation();
-  console.log('Current location:', location.pathname); // Debug log
   
-  const showThemeSwitcher = location.pathname === '/';
+  // Only show theme switcher on the index page
+  const showThemeSwitcher = location.pathname === '/' || location.pathname === '/chatbottheme/';
   const isSpecPage = location.pathname === '/spec';
   const isVoobotPage = location.pathname === '/voobot';
 
@@ -35,11 +35,7 @@ const AppContent = () => {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/spec" element={<Spec />} />
-              <Route path="/voobot" element={
-                <div className="h-screen w-screen flex items-center justify-center">
-                  <Voobot />
-                </div>
-              } />
+              <Route path="/voobot" element={<Voobot />} />
             </Routes>
           </div>
         </TooltipProvider>
